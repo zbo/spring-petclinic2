@@ -26,7 +26,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:spring/business-config.xml", "classpath:spring/tools-config.xml", "classpath:spring/mvc-core-config.xml"})
 @WebAppConfiguration
-@ActiveProfiles("spring-data-jpa")
+@ActiveProfiles("jpa")
 public class PetControllerTests {
 
     private static final int TEST_OWNER_ID = 1;

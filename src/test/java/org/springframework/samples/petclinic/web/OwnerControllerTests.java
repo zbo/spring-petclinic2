@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:spring/business-config.xml", "classpath:spring/tools-config.xml", "classpath:spring/mvc-core-config.xml"})
 @WebAppConfiguration
-@ActiveProfiles("spring-data-jpa")
+@ActiveProfiles("jpa")
 public class OwnerControllerTests {
 
     private static final int TEST_OWNER_ID = 1;
@@ -86,15 +86,22 @@ public class OwnerControllerTests {
     }
 
     @Test
-    public void testProcessFindFormSuccess() throws Exception {
-        mockMvc.perform(get("/owners"))
+    public void testProcessFindLastNameFormSuccess() throws Exception {
+        mockMvc.perform(get("/owners-lastName"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("owners/ownersList"));
+    }
+
+    @Test
+    public void testProcessFindFirstNameFormSuccess() throws Exception {
+        mockMvc.perform(get("/owners-firstName"))
             .andExpect(status().isOk())
             .andExpect(view().name("owners/ownersList"));
     }
 
     @Test
     public void testProcessFindFormByLastName() throws Exception {
-        mockMvc.perform(get("/owners")
+        mockMvc.perform(get("/owners-lastName")
             .param("lastName", "Franklin")
         )
             .andExpect(status().is3xxRedirection())
@@ -102,8 +109,8 @@ public class OwnerControllerTests {
     }
 
     @Test
-    public void testProcessFindFormNoOwnersFound() throws Exception {
-        mockMvc.perform(get("/owners")
+    public void testProcessFindFormLastNameNoOwnersFound() throws Exception {
+        mockMvc.perform(get("/owners-lastName")
             .param("lastName", "Unknown Surname")
         )
             .andExpect(status().isOk())

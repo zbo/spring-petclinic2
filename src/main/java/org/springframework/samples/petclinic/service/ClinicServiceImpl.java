@@ -73,6 +73,7 @@ public class ClinicServiceImpl implements ClinicService {
     }
 
     @Override
+    @Transactional
     public Collection<Owner> findOwnerByFirstName(String firstName) throws DataAccessException {
         return ownerRepository.findByFirstName(firstName);
     }

@@ -59,13 +59,12 @@ public class JpaOwnerRepositoryImpl implements OwnerRepository {
         return query.getResultList();
     }
 
-    @Override
-    public Collection<Owner> findByFirstName(String firstName) throws DataAccessException {
+    @SuppressWarnings("unchecked")
+    public Collection<Owner> findByFirstName(String firstName) {
         Query query = this.em.createQuery("SELECT DISTINCT owner FROM Owner owner left join fetch owner.pets WHERE owner.firstName LIKE :firstName");
         query.setParameter("firstName", firstName + "%");
         return query.getResultList();
     }
-
 
     @Override
     public Owner findById(int id) {

@@ -23,7 +23,7 @@ import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:spring/business-config.xml", "classpath:spring/tools-config.xml", "classpath:spring/mvc-core-config.xml"})
 @WebAppConfiguration
-@ActiveProfiles("spring-data-jpa")
+@ActiveProfiles("jpa")
 public class CrashControllerTests {
 
     @Autowired
