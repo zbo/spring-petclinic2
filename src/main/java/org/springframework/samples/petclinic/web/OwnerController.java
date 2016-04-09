@@ -168,14 +168,11 @@ public class OwnerController {
     @RequestMapping("/owners.json")
     public
     @ResponseBody
-    Owners showResourcesOwnerList() throws IOException {
-        Owners owners = new Owners();
-        owners.getOwnerList().addAll(this.clinicService.findOwners());
-        return owners;
-
-//        Vets vets = new Vets();
-//        vets.getVetList().addAll(this.clinicService.findVets());
-//        this.response.getWriter().write((JsonUtil.toJson(vets)));
+    void showResourcesOwnerList() throws IOException {
+        Owners ownerList = new Owners();
+        ownerList.getOwnerList().addAll(this.clinicService.findOwners());
+        this.response.setContentType("application/json;charset=UTF-8");
+        this.response.getWriter().write((JsonUtil.toJson(ownerList)));
     }
 
     @RequestMapping("/owners_and_pets.json")

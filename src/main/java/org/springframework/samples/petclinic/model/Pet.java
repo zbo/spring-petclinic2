@@ -33,6 +33,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.google.gson.annotations.Expose;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
@@ -58,10 +59,12 @@ public class Pet extends NamedEntity {
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     @JsonSerialize(using = DateJsonSerializer.class)
     @JsonDeserialize(using = DateJsonDeserializer.class)
+    @Expose
     private LocalDate birthDate;
 
     @ManyToOne
     @JoinColumn(name = "type_id")
+    @Expose
     private PetType type;
 
     @JsonIgnore
