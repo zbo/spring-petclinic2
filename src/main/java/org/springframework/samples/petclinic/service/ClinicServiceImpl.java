@@ -79,6 +79,11 @@ public class ClinicServiceImpl implements ClinicService {
     }
 
     @Override
+    public Collection<? extends Owner> findOwnersAndPets() {
+        return ownerRepository.findAllWithPets();
+    }
+
+    @Override
     @Transactional
     public void saveOwner(Owner owner) throws DataAccessException {
         ownerRepository.save(owner);
@@ -110,6 +115,14 @@ public class ClinicServiceImpl implements ClinicService {
     public Collection<Vet> findVets() throws DataAccessException {
         return vetRepository.findAll();
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    @Cacheable(value = "owners")
+    public Collection<Owner> findOwners() throws DataAccessException {
+        return ownerRepository.findAll();
+    }
+
 
 
 }

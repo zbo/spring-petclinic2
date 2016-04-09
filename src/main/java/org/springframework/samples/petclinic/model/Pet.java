@@ -30,6 +30,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
@@ -57,10 +58,12 @@ public class Pet extends NamedEntity {
     @JoinColumn(name = "type_id")
     private PetType type;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet", fetch = FetchType.EAGER)
     private Set<Visit> visits;
 

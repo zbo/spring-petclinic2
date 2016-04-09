@@ -217,5 +217,13 @@ public abstract class AbstractClinicServiceTests {
         assertThat(visit.getId()).isNotNull();
     }
 
+    @Test
+    public void shouldFindOwners() {
+        Collection<Owner> owners = this.clinicService.findOwners();
+        Owner owner = EntityUtils.getById(owners, Owner.class, 3);
+        assertThat(owner.getLastName()).isEqualTo("Rodriquez");
+        assertThat(owner.getAddress()).isEqualTo("2693 Commerce St.");
+        assertThat(owner.getFirstName()).isEqualTo("Eduardo");
+    }
 
 }

@@ -4,11 +4,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.hamcrest.Matchers.hasProperty;
@@ -16,9 +18,7 @@ import static org.hamcrest.Matchers.is;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Test class for {@link OwnerController}
@@ -169,6 +169,22 @@ public class OwnerControllerTests {
             .andExpect(model().attribute("owner", hasProperty("city", is("Madison"))))
             .andExpect(model().attribute("owner", hasProperty("telephone", is("6085551023"))))
             .andExpect(view().name("owners/ownerDetails"));
+    }
+
+    @Test
+    public void testShowResourcesOwnersList() throws Exception {
+        ResultActions actions = mockMvc.perform(get("/owners.json").accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk());
+        actions.andExpect(content().contentType("application/json;charset=UTF-8"))
+            .andExpect(jsonPath("$.ownerList[0].id").value(7));
+    }
+
+    @Test
+    public void testShowResourcesOwnerPetsList() throws Exception {
+        ResultActions actions = mockMvc.perform(get("/owners_and_pets.json").accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk());
+        actions.andExpect(content().contentType("application/json;charset=UTF-8"))
+            .andExpect(jsonPath("$.ownerList[0].id").value(1));
     }
 
 }

@@ -44,9 +44,13 @@ public interface ClinicService {
 
     Collection<Vet> findVets() throws DataAccessException;
 
+    Collection<Owner> findOwners() throws DataAccessException;
+
     void saveOwner(Owner owner) throws DataAccessException;
 
     Collection<Owner> findOwnerByLastName(String lastName) throws DataAccessException;
 
     Collection<Owner> findOwnerByFirstName(String firstName) throws DataAccessException;
+
+    Collection<? extends Owner> findOwnersAndPets();
 }

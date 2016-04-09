@@ -22,6 +22,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Owner;
+import org.springframework.samples.petclinic.model.Owners;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +31,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -146,6 +148,26 @@ public class OwnerController {
         ModelAndView mav = new ModelAndView("owners/ownerDetails");
         mav.addObject(this.clinicService.findOwnerById(ownerId));
         return mav;
+    }
+
+    @RequestMapping("/owners.json")
+    public
+    @ResponseBody
+    Owners showResourcesOwnerList() {
+        // Here we are returning an object of type 'Vets' rather than a collection of Vet objects
+        // so it is simpler for JSon/Object mapping
+        Owners owners = new Owners();
+        owners.getOwnerList().addAll(this.clinicService.findOwners());
+        return owners;
+    }
+
+    @RequestMapping("/owners_and_pets.json")
+    public
+    @ResponseBody
+    Owners showResourcesOwnerPetList() {
+        Owners owners = new Owners();
+        owners.getOwnerList().addAll(this.clinicService.findOwnersAndPets());
+        return owners;
     }
 
 }

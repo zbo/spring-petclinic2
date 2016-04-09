@@ -62,4 +62,8 @@ public interface OwnerRepository {
 
 
     Collection<Owner> findByFirstName(String firstName) throws DataAccessException;
+
+    Collection<Owner> findAll();
+
+    Collection<Owner> findAllWithPets();
 }
