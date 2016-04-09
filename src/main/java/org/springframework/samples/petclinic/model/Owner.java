@@ -60,7 +60,7 @@ public class Owner extends Person {
     private String telephone;
 
     @Lazy(value = false)
-    @JsonIgnore
+    //@JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private Set<Pet> pets;
 

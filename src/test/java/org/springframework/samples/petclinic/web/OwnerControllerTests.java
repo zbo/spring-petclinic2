@@ -176,7 +176,7 @@ public class OwnerControllerTests {
         ResultActions actions = mockMvc.perform(get("/owners.json").accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk());
         actions.andExpect(content().contentType("application/json;charset=UTF-8"))
-            .andExpect(jsonPath("$.ownerList[0].id").value(7));
+            .andExpect(jsonPath("$.ownerList[0].id").value(1));
     }
 
     @Test
