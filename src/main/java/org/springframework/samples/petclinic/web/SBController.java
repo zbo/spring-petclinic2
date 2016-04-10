@@ -13,6 +13,7 @@ import javax.validation.Valid;
 import com.google.gson.Gson;
 import com.mysql.fabric.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Owners;
 import org.springframework.samples.petclinic.model.Vets;
@@ -53,9 +54,14 @@ public class SBController {
         this.session = request.getSession();
     }
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String initCreationForm(Map<String, Object> model) {
-        return "redirect:/sb2/index.html";
+    @RequestMapping(value = "bootstrap/index", method = RequestMethod.GET)
+    public String init_index(Map<String, Object> model) {
+        return "bootstrap/pages/index";
+    }
+
+    @RequestMapping(value = "bootstrap/owners", method = RequestMethod.GET)
+    public String get_owner(Map<String, Object> model) {
+        return "bootstrap/pages/owners";
     }
 
 }
