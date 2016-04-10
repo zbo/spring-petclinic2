@@ -28,6 +28,7 @@
         (see staticFiles.jsp for more details) -->
     <mvc:resources mapping="/resources/**" location="/resources/"/>
     <mvc:resources mapping="/vendors/**" location="/vendors/"/>
+    <mvc:resources mapping="/sb2/**" location="/sb2/"/>
 
     <mvc:view-controller path="/" view-name="welcome"/>
 
