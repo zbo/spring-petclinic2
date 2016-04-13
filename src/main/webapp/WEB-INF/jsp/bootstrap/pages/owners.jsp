@@ -25,21 +25,23 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">All Owners</h1>
+                <h1 class="page-header">All Owners table</h1>
             </div>
         </div>
-        <div class="row" ng-controller="firstCtrl">
+        <div class="row" ng-controller="ownerCtrl">
             <div class="col-lg-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table ng-table="tableParams" class="table" show-filter="true">
-                                    <tr ng-repeat="user in $data">
-                                        <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
-                                            {{user.name}}</td>
-                                        <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
-                                            {{user.age}}</td>
+                                    <tr ng-repeat="owner in $data">
+                                        <td title="'Address'" filter="{ address: 'text'}" sortable="'address'">
+                                            {{owner.address}}</td>
+                                        <td title="'City'" filter="{ city: 'text'}" sortable="'city'">
+                                            {{owner.city}}</td>
+                                        <td title="'Telephone'" filter="{ telephone: 'number'}" sortable="'telephone'">
+                                            {{owner.telephone}}</td>
                                     </tr>
                                 </table>
                             </div>

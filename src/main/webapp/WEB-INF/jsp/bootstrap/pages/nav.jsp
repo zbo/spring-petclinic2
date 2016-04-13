@@ -236,10 +236,10 @@
                     <!-- /input-group -->
                 </li>
                 <li>
-                    <a href="/bootstrap/owners"><i class="fa fa-key fa-fw"></i> Owners</a>
+                    <a href="/petclinic/bootstrap/owners"><i class="fa fa-key fa-fw"></i> Owners</a>
                 </li>
                 <li>
-                    <a href="/bootstrap/index"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    <a href="/petclinic/bootstrap/index"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>

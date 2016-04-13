@@ -2,11 +2,23 @@
  * Created by zbo on 4/11/16.
  */
 var app = angular.module('owner', ['ngTable']);
-app.controller('firstCtrl', function($scope, NgTableParams) {
+
+app.service('ownerService', function() {
+    this.getAllOwners = function ($scope, $http, NgTableParams) {
+        //var data = [{name: "Bob", age: 50},{name: "Tan", age: 51},{name: "You", age: 52} /*,*/];
+        $http.get("/petclinic/owners.json").success(function (response) {
+            console.log(response)
+            var data = response.owners;
+            $scope.tableParams = new NgTableParams({}, { dataset: data});
+        });
+    }
+});
+
+app.controller('ownerCtrl', function($scope, NgTableParams, ownerService, $http) {
     $scope.firstName = "John";
     $scope.lastName = "Doe";
-    var data = [{name: "Moroni", age: 50},{name: "Moroni", age: 51},{name: "Moroni", age: 52} /*,*/];
-    $scope.tableParams = new NgTableParams({}, { dataset: data});
+    ownerService.getAllOwners($scope, $http, NgTableParams);
+
 });
 
 
