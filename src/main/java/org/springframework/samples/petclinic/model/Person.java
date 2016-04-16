@@ -18,6 +18,7 @@ package org.springframework.samples.petclinic.model;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
+import com.google.gson.annotations.Expose;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -28,10 +29,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 @MappedSuperclass
 public class Person extends BaseEntity {
 
+    @Expose
     @Column(name = "first_name")
     @NotEmpty
     protected String firstName;
 
+    @Expose
     @Column(name = "last_name")
     @NotEmpty
     protected String lastName;

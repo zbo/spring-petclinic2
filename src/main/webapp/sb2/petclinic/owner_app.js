@@ -9,6 +9,9 @@ app.service('ownerService', function() {
         $http.get("/petclinic/owners.json").success(function (response) {
             console.log(response)
             var data = response.owners;
+            angular.forEach(data, function(da){
+                da.fullName=da.firstName + " " + da.lastName;
+            });
             $scope.tableParams = new NgTableParams({}, { dataset: data});
         });
     }
