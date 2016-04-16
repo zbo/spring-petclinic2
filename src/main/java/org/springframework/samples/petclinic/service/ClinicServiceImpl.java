@@ -118,7 +118,7 @@ public class ClinicServiceImpl implements ClinicService {
 
     @Override
     @Transactional(readOnly = true)
-    @Cacheable(value = "owners")
+    //@Cacheable(value = "owners")
     public Collection<Owner> findOwners() throws DataAccessException {
         return ownerRepository.findAll();
     }

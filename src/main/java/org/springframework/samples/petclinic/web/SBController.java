@@ -64,4 +64,18 @@ public class SBController {
         return "bootstrap/pages/owners";
     }
 
+    @RequestMapping(value = "bootstrap/owners/{ownerId}", method = RequestMethod.GET)
+    public ModelAndView show_owner(@PathVariable("ownerId") int ownerId) {
+        ModelAndView mav = new ModelAndView("bootstrap/pages/ownerDetails");
+        mav.addObject(this.clinicService.findOwnerById(ownerId));
+        return mav;
+    }
+
+    @RequestMapping(value = "bootstrap/owners/{ownerId}", method = RequestMethod.POST)
+    public String edit_owner(@Valid Owner owner, BindingResult result, @PathVariable("ownerId") int ownerId) {
+        owner.setId(ownerId);
+        this.clinicService.saveOwner(owner);
+        return "redirect:/bootstrap/owners";
+
+    }
 }

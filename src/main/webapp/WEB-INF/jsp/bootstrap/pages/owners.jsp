@@ -37,7 +37,7 @@
                                 <table ng-table="tableParams" class="table" show-filter="true">
                                     <tr ng-repeat="owner in $data">
                                         <td title="'Name'" filter="{ fullName: 'text'}" sortable="'name'">
-                                            {{owner.fullName}}</td>
+                                            <a href="owners/{{owner.id}}">{{owner.fullName}}</a></td>
                                         <td title="'Address'" filter="{ address: 'text'}" sortable="'address'">
                                             {{owner.address}}</td>
                                         <td title="'City'" filter="{ city: 'text'}" sortable="'city'">
