@@ -167,6 +167,7 @@ public class JdbcOwnerRepositoryImpl implements OwnerRepository {
         throw new NotImplementedException();
     }
 
+
     public Collection<PetType> getPetTypes() throws DataAccessException {
         return this.namedParameterJdbcTemplate.query(
             "SELECT id, name FROM types ORDER BY name", new HashMap<String, Object>(),

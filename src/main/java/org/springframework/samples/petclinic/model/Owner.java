@@ -23,6 +23,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.gson.annotations.Expose;
@@ -61,6 +62,11 @@ public class Owner extends Person {
     private String telephone;
 
     @Expose
+    @Column(name = "deleted")
+    @NotNull
+    private int deleted;
+
+    @Expose
     @Lazy(value = false)
     //@JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
@@ -88,6 +94,14 @@ public class Owner extends Person {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public int getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(int deleted) {
+        this.deleted = deleted;
     }
 
     protected Set<Pet> getPetsInternal() {

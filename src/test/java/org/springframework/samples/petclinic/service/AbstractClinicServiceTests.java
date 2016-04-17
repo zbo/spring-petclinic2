@@ -15,6 +15,7 @@
  */
 package org.springframework.samples.petclinic.service;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.sql.Connection;
@@ -23,11 +24,14 @@ import java.util.Collection;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
+import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
@@ -224,6 +228,19 @@ public abstract class AbstractClinicServiceTests {
         assertThat(owner.getLastName()).isEqualTo("Rodriquez");
         assertThat(owner.getAddress()).isEqualTo("2693 Commerce St.");
         assertThat(owner.getFirstName()).isEqualTo("Eduardo");
+    }
+
+
+    @Test
+    public void shouldDeleteOwner() throws Exception {
+        Owner owner = this.clinicService.findOwnerById(1);
+        this.clinicService.deleteOwner(owner);
+        Collection<Owner> owners = this.clinicService.findOwners();
+        try {
+            Owner owner_deleted = EntityUtils.getById(owners, Owner.class, 1);
+        }catch(Exception exp){
+            assertTrue(exp instanceof ObjectRetrievalFailureException);
+        }
     }
 
 }

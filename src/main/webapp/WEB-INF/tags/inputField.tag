@@ -23,7 +23,7 @@
         <div class="${cssGroup}">
             <label class="control-label" for="${name}">${label}</label>
             <form:input type="text" class="form-control" path="${name}"/>
-            <span class="help-inline">${status.errorMessage}</span>
+            <span class="help-inline" style="color: red">${status.errorMessage}</span>
         </div>
     </spring:bind>
 </div>

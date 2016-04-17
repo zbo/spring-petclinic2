@@ -95,4 +95,12 @@ public class SBController {
             return "redirect:/bootstrap/owners/" + owner.getId();
         }
     }
+
+    @RequestMapping(value = "bootstrap/owners/delete/{ownerId}", method = RequestMethod.GET)
+    public String delete_owner(@PathVariable("ownerId") int ownerId) {
+        Owner owner = this.clinicService.findOwnerById(ownerId);
+        this.clinicService.deleteOwner(owner);
+        return "redirect:/bootstrap/owners";
+
+    }
 }

@@ -123,6 +123,11 @@ public class ClinicServiceImpl implements ClinicService {
         return ownerRepository.findAll();
     }
 
-
+    @Override
+    @Transactional
+    public void deleteOwner(Owner owner) throws DataAccessException{
+        owner.setDeleted(1);
+        ownerRepository.save(owner);
+    }
 
 }

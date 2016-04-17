@@ -13,4 +13,5 @@
     <petclinic:inputField label="City" name="city"/>
     <petclinic:inputField label="Telephone" name="telephone"/>
     <button type="submit" class="btn btn-default">Submit</button>
+    <a class="btn btn-default" href="../owners">Cancel</a>
 </form:form>

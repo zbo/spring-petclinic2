@@ -50,6 +50,10 @@
                                     <td title="'Telephone'" filter="{ telephone: 'number'}" sortable="'telephone'">
                                         {{owner.telephone}}
                                     </td>
+                                    <td title="'Delete'">
+                                        <a href="owners/delete/{{owner.id}}">Delete</a>
+                                    </td>
+
                                 </tr>
                             </table>
                         </div>

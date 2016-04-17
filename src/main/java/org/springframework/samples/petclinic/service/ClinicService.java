@@ -53,4 +53,6 @@ public interface ClinicService {
     Collection<Owner> findOwnerByFirstName(String firstName) throws DataAccessException;
 
     Collection<? extends Owner> findOwnersAndPets();
+
+    void deleteOwner(Owner owner) throws DataAccessException;
 }
