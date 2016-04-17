@@ -32,21 +32,26 @@
             <div class="col-lg-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table ng-table="tableParams" class="table" show-filter="true">
-                                    <tr ng-repeat="owner in $data">
-                                        <td title="'Name'" filter="{ fullName: 'text'}" sortable="'name'">
-                                            <a href="owners/{{owner.id}}">{{owner.fullName}}</a></td>
-                                        <td title="'Address'" filter="{ address: 'text'}" sortable="'address'">
-                                            {{owner.address}}</td>
-                                        <td title="'City'" filter="{ city: 'text'}" sortable="'city'">
-                                            {{owner.city}}</td>
-                                        <td title="'Telephone'" filter="{ telephone: 'number'}" sortable="'telephone'">
-                                            {{owner.telephone}}</td>
-                                    </tr>
-                                </table>
-                            </div>
+                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                        <a href="owners/new" class="btn btn-default">Create New</a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table ng-table="tableParams" class="table" show-filter="true">
+                                <tr ng-repeat="owner in $data">
+                                    <td title="'Name'" filter="{ fullName: 'text'}" sortable="'name'">
+                                        <a href="owners/{{owner.id}}">{{owner.fullName}}</a></td>
+                                    <td title="'Address'" filter="{ address: 'text'}" sortable="'address'">
+                                        {{owner.address}}
+                                    </td>
+                                    <td title="'City'" filter="{ city: 'text'}" sortable="'city'">
+                                        {{owner.city}}
+                                    </td>
+                                    <td title="'Telephone'" filter="{ telephone: 'number'}" sortable="'telephone'">
+                                        {{owner.telephone}}
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>

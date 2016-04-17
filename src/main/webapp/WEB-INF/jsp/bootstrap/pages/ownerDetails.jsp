@@ -7,7 +7,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="joda" uri="http://www.joda.org/joda/time/tags" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <head>
 
@@ -41,29 +40,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-body">
-                            <form:form modelAttribute="owner" class="form-horizontal">
-                                <div class="form-group has-success">
-                                    <label class="control-label" for="firstName">First Name</label>
-                                    <form:input type="text" class="form-control" path="firstName" value="${owner.firstName}"/>
-                                </div>
-                                <div class="form-group has-success">
-                                    <label class="control-label" for="lastName">Last Name</label>
-                                    <form:input type="text" class="form-control" path="lastName" value="${owner.lastName}"/>
-                                </div>
-                                <div class="form-group has-success">
-                                    <label class="control-label" for="address">Address</label>
-                                    <form:input type="text" class="form-control" path="address" value="${owner.address}"/>
-                                </div>
-                                <div class="form-group has-success">
-                                    <label class="control-label" for="city">City</label>
-                                    <form:input type="text" class="form-control" path="city" value="${owner.city}"/>
-                                </div>
-                                <div class="form-group has-success">
-                                    <label class="control-label" for="telephone">Telephone</label>
-                                    <form:input type="text" class="form-control" path="telephone" value="${owner.telephone}"/>
-                                </div>
-                                <button type="submit" class="btn btn-default">Submit</button>
-                            </form:form>
+                            <jsp:include page="createOrUpdateOwner.jsp"/>
                         </div>
                     </div>
                 </div>

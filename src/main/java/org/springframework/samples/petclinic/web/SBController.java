@@ -78,4 +78,21 @@ public class SBController {
         return "redirect:/bootstrap/owners";
 
     }
+    @RequestMapping(value = "bootstrap/owners/new", method = RequestMethod.GET)
+    public ModelAndView new_owner() {
+        ModelAndView mav = new ModelAndView("bootstrap/pages/ownerDetails");
+        Owner owner= new Owner();
+        mav.addObject("owner", owner);
+        return mav;
+    }
+
+    @RequestMapping(value = "bootstrap/owners/new", method = RequestMethod.POST)
+    public String create_owner(@Valid Owner owner, BindingResult result) {
+        if (result.hasErrors()) {
+            return "bootstrap/pages/ownerDetails";
+        } else {
+            this.clinicService.saveOwner(owner);
+            return "redirect:/bootstrap/owners/" + owner.getId();
+        }
+    }
 }
