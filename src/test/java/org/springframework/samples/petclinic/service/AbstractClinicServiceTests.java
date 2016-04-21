@@ -21,17 +21,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.sql.Connection;
 import java.util.Collection;
 
-import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
-import org.junit.Before;
-import org.junit.Rule;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.orm.ObjectRetrievalFailureException;
+import org.springframework.samples.petclinic.AbstractTestBase;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
@@ -62,30 +63,13 @@ import javax.sql.DataSource;
  * @author Sam Brannen
  * @author Michael Isvy
  */
-public abstract class AbstractClinicServiceTests {
+public abstract class AbstractClinicServiceTests extends AbstractTestBase {
 
     @Autowired
     protected ClinicService clinicService;
 
-    @Autowired
-    DataSource dataSource;
-
-    //@Before
-    public void resetData(){
-        ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
-        populator.addScript(new ClassPathResource("db/mysql/initDB.sql"));
-        populator.addScript(new ClassPathResource("db/mysql/populateDB.sql"));
-        Connection connection = null;
-
-        try {
-            connection = DataSourceUtils.getConnection(dataSource);
-            populator.populate(connection);
-        } finally {
-            if (connection != null) {
-                DataSourceUtils.releaseConnection(connection, dataSource);
-            }
-        }
-    }
+//    @Autowired
+//    DataSource dataSource;
 
     @Test
     public void shouldFindOwnersByLastName() {

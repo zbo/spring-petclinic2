@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.samples.petclinic.AbstractTestBase;
 import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.service.ClinicService;
 
@@ -20,7 +21,7 @@ import static org.junit.Assert.assertEquals;
  * @author Colin But
  */
 @RunWith(MockitoJUnitRunner.class)
-public class PetTypeFormatterTests {
+public class PetTypeFormatterTests extends AbstractTestBase {
 
     @Mock
     private ClinicService clinicService;

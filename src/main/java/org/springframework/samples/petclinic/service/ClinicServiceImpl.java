@@ -18,6 +18,7 @@ package org.springframework.samples.petclinic.service;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Owner;
@@ -29,8 +30,14 @@ import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
 import org.springframework.samples.petclinic.repository.VisitRepository;
+import org.springframework.samples.petclinic.repository.jpa.JpaOwnerRepositoryImpl;
+import org.springframework.samples.petclinic.repository.jpa.JpaPetRepositoryImpl;
+import org.springframework.samples.petclinic.repository.jpa.JpaVetRepositoryImpl;
+import org.springframework.samples.petclinic.repository.jpa.JpaVisitRepositoryImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
 
 /**
  * Mostly used as a facade for all Petclinic controllers
@@ -41,13 +48,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class ClinicServiceImpl implements ClinicService {
 
-    private PetRepository petRepository;
-    private VetRepository vetRepository;
-    private OwnerRepository ownerRepository;
-    private VisitRepository visitRepository;
+    private JpaPetRepositoryImpl petRepository;
+    private JpaVetRepositoryImpl vetRepository;
+    private JpaOwnerRepositoryImpl ownerRepository;
+    private JpaVisitRepositoryImpl visitRepository;
 
     @Autowired
-    public ClinicServiceImpl(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository, VisitRepository visitRepository) {
+    public ClinicServiceImpl(JpaPetRepositoryImpl petRepository,
+                             JpaVetRepositoryImpl vetRepository,
+                             JpaOwnerRepositoryImpl ownerRepository,
+                             JpaVisitRepositoryImpl visitRepository) {
         this.petRepository = petRepository;
         this.vetRepository = vetRepository;
         this.ownerRepository = ownerRepository;
