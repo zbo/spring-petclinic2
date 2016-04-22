@@ -29,6 +29,7 @@ public abstract class  AbstractTestBase {
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
         reader.loadBeanDefinitions(res);
 
+        System.setProperty("spring.profiles.active", "jpa");
         ApplicationContext context = new ClassPathXmlApplicationContext("spring/business-config.xml");
         DataSource bean = context.getBean("dataSource", DataSource.class);
 

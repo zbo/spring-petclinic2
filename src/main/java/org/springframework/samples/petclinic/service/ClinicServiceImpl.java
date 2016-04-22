@@ -48,16 +48,16 @@ import javax.annotation.Resource;
 @Service
 public class ClinicServiceImpl implements ClinicService {
 
-    private JpaPetRepositoryImpl petRepository;
-    private JpaVetRepositoryImpl vetRepository;
-    private JpaOwnerRepositoryImpl ownerRepository;
-    private JpaVisitRepositoryImpl visitRepository;
+    private PetRepository petRepository;
+    private VetRepository vetRepository;
+    private OwnerRepository ownerRepository;
+    private VisitRepository visitRepository;
 
     @Autowired
-    public ClinicServiceImpl(JpaPetRepositoryImpl petRepository,
-                             JpaVetRepositoryImpl vetRepository,
-                             JpaOwnerRepositoryImpl ownerRepository,
-                             JpaVisitRepositoryImpl visitRepository) {
+    public ClinicServiceImpl(PetRepository petRepository,
+                             VetRepository vetRepository,
+                             OwnerRepository ownerRepository,
+                             VisitRepository visitRepository) {
         this.petRepository = petRepository;
         this.vetRepository = vetRepository;
         this.ownerRepository = ownerRepository;
